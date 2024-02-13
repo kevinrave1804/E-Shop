@@ -21,7 +21,6 @@ function AppRoutes() {
   return routes
 }
 
-
 function App() {
   return (
     <>
