@@ -1,8 +1,9 @@
 import React from 'react'
+import Layout from '../../Components/Layout/Layout'
 
 function Categories() {
     return (
-        <div>Categories</div>
+        <Layout>Categories</Layout>
     )
 }
 
