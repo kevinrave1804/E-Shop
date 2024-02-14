@@ -1,50 +1,51 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { BuildingStorefrontIcon } from '@heroicons/react/24/solid'
+import { FaLinkedin, FaInstagramSquare, FaGithub } from "react-icons/fa";
 
 function Footer() {
     return (
-        <footer className='bg-[#75FBB2] text-center'>
-            <h2 className='text-xl font-bold'>Contact Us</h2>
-            <div className='flex flex-wrap items-center justify-between'>
-                <div className='flex items-center'>
-                    <BuildingStorefrontIcon className='h-14 w-14' />
-                    <h2 className='text-5xl font-bold max-md:2xl max-sm:text-2xl'>E-Shop</h2>
+        <footer className="bg-teal-600">
+            <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-8 sm:px-6 lg:space-y-16 lg:px-8">
+                <div className="flex sm:items-center sm:justify-between max-sm:flex-col max-sm:items-center">
+                    <NavLink to={"/"} className="flex flex-shrink-0 items-center">
+                        <BuildingStorefrontIcon className='h-14 w-auto' />
+                        <h2 className='text-3xl font-bold'>E-Shop</h2>
+                    </NavLink>
+
+                    <div className='flex items-center max-sm:flex-col'>
+                        <h2 className='text-xl font-bold mr-6'>Contact Us</h2>
+                        <ul className="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end">
+                            <li>
+                                <NavLink
+                                    to={"https://www.linkedin.com/in/kevin-ramirez-2a98801a2"}
+                                    target="_blank"
+                                >
+                                    <span className="sr-only">LinkedIn</span>
+                                    <FaLinkedin className="h-8 w-8" />
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to={"https://github.com/kevinrave1804?tab=repositories"}
+                                    target="_blank"
+                                >
+                                    <span className="sr-only">Github</span>
+                                    <FaGithub className="h-8 w-8" />
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to={"https://www.instagram.com/kevin_velez18"}
+                                    target="_blank"
+                                >
+                                    <span className="sr-only">Instagram</span>
+                                    <FaInstagramSquare className="h-8 w-8" />
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <ul className='flex flex-wrap'>
-                    <NavLink
-                        to={'https://github.com/kevinrave1804?tab=repositories'}
-                        target='_blank'>
-                        <li className='flex flex-wrap items-center mr-4'>
-                            <img
-                                className='w-10 h-10 m-2'
-                                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                                alt="github" />
-                            <p>Github</p>
-                        </li>
-                    </NavLink>
-                    <NavLink
-                        to={'https://www.linkedin.com/in/kevin-ramirez-2a98801a2'}
-                        target='_blank'>
-                        <li className='flex flex-wrap items-center mr-4'>
-                            <img
-                                className='w-10 h-10 m-2'
-                                src="https://cdn-icons-png.flaticon.com/512/25/25320.png"
-                                alt="linkeid" />
-                            <p>LinkedIn</p>
-                        </li>
-                    </NavLink>
-                    <NavLink
-                        to={'https://www.instagram.com/kevin_velez18'}>
-                        <li className='flex flex-wrap items-center mr-4'>
-                            <img
-                                className='w-10 h-10 m-2'
-                                src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png"
-                                alt="instagram" />
-                            <p>Instagram</p>
-                        </li>
-                    </NavLink>
-                </ul>
             </div>
         </footer>
     )
