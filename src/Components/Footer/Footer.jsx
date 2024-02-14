@@ -4,7 +4,7 @@ import { BuildingStorefrontIcon } from '@heroicons/react/24/solid'
 
 function Footer() {
     return (
-        <footer className='bg-[#75FBB2] h-[100px] text-center'>
+        <footer className='bg-teal-600 h-[100px] text-center'>
             <h2 className='text-xl font-bold'>Contact Us</h2>
             <div className='flex items-center justify-between'>
                 <div className='flex items-center'>

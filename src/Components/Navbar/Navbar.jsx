@@ -5,7 +5,7 @@ import Button from '../Button/Button'
 
 function Navbar() {
     return (
-        <header className='bg-[#75FBB2] w-full h-[80px] flex fixed top-0 z-10'>
+        <header className='bg-teal-600 w-full h-[80px] flex fixed top-0 z-10'>
             <nav className='w-full flex justify-between'>
                 <ul className='flex items-center'>
                     <NavLink to={'/categories'}>
