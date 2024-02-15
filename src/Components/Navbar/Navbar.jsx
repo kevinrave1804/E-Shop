@@ -7,8 +7,8 @@ import Button from '../Button/Button'
 import UserMenu from '../UserMenu/UserMenu'
 
 const navigation = [
-    { name: 'Categories', href: '/categories', current: true },
-    { name: 'Products', href: '/products', current: false },
+    { name: 'Categories', href: '/categories' },
+    { name: 'Products', href: '/products' },
 ]
 
 function classNames(...classes) {

@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import Home from '../Home/Home'
 import Categories from '../Categories/Categories'
@@ -7,6 +8,7 @@ import Cart from '../Cart/Cart'
 import Profile from '../Profile/Profile'
 import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
+import { Provider } from '../../Context'
 
 function AppRoutes() {
   const routes = useRoutes([
@@ -24,11 +26,13 @@ function AppRoutes() {
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <AppRoutes />
-        <Footer />
-      </BrowserRouter>
+      <Provider>
+        <BrowserRouter>
+          <Navbar />
+          <AppRoutes />
+          <Footer />
+        </BrowserRouter>
+      </Provider>
     </>
   )
 }
