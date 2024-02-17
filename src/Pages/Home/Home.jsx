@@ -5,7 +5,7 @@ import { Context } from '../../Context'
 
 function Home() {
     const context = useContext(Context)
-    const { products } = context
+    const { limitProducts } = context
     return (
         <Layout>
             <section className='bg-gradient-to-b from-teal-600 to-white'>
@@ -34,12 +34,13 @@ function Home() {
                 <div className='flex flex-col justify-center sm:px-28'>
                     <h2 className='text-2xl sm:text-5xl font-bold pb-10'>"Experience the future of shopping<br />with e-Shop, where innovation meets <br /> style in every product we offer."</h2>
                     <div className='grid grid-cols-2 place-items-center gap-10 lg:grid-cols-3 max-sm:grid-cols-1'>
-                        {products?.map(product => {
+                        {limitProducts?.map(product => {
                             return (
                                 <picture key={product.id} >
                                     <img
                                         src={product.image}
                                         alt={product.title}
+                                        loading='lazy'
                                         className='w-56 h-80 shadow-[10px_10px_10px_rgb(20,184,166)] object-contain rounded-lg max-sm:w-40 max-sm:h-60' />
                                 </picture>
                             )
