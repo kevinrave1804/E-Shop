@@ -15,7 +15,7 @@ function ProductCard({ product }) {
                     src={product.image}
                     alt="shoes"
                     loading='lazy'
-                    className='w-56 h-80 shadow-[10px_10px_10px_rgb(20,184,166)] object-contain rounded-lg max-sm:w-40 max-sm:h-60' />
+                    className='w-56 h-80 shadow-[10px_10px_10px_gray] object-contain rounded-lg max-sm:w-40 max-sm:h-60' />
             </picture>
             <div>
                 <div className='flex justify-between'>

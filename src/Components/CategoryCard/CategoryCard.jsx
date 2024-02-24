@@ -20,8 +20,8 @@ function CategoryCard({ category }) {
     }, [])
 
     return (
-        <section>
-            <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <section className='mb-4'>
+            <div className="mx-auto max-w-screen-xl px-4 py-8 border-2 border-teal-400 rounded-md sm:px-6 sm:py-12 lg:px-8">
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:items-stretch">
                     <div className="grid place-content-center rounded bg-gray-100 p-6 sm:p-8">
                         <div className="mx-auto max-w-md text-center lg:text-left">
@@ -36,10 +36,10 @@ function CategoryCard({ category }) {
                     </div>
 
                     <div className="lg:col-span-2 lg:py-8">
-                        <ul className="grid grid-cols-2 gap-4">
+                        <ul className="flex overflow-x-auto">
                             {productsCategory?.map(product => (
-                                <li>
-                                    <ProductCard key={product.id} product={product} />
+                                <li key={product.id}>
+                                    <ProductCard product={product} />
                                 </li>
                             ))}
                         </ul>

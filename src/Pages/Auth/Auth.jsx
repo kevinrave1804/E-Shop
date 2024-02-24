@@ -1,9 +1,8 @@
 import React from 'react'
-import Layout from '../../Components/Layout/Layout'
 
 function Auth() {
     return (
-        <div>Auth</div>
+        <div>LogIn</div>
     )
 }
 

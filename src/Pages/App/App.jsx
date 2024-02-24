@@ -28,9 +28,9 @@ function App() {
     <>
       <Provider>
         <BrowserRouter>
-          <Navbar />
+          {/* <Navbar /> */}
           <AppRoutes />
-          <Footer />
+          {/* <Footer /> */}
         </BrowserRouter>
       </Provider>
     </>
