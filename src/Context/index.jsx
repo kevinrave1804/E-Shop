@@ -6,6 +6,7 @@ export const Context = createContext()
 export function Provider({ children }) {
     const [limitProducts, setlimitProducts] = useState(null)
     const [products, setProdcuts] = useState(null)
+    const [auth, setAuth] = useState(false)
 
     async function fetchLimitProducts() {
         const response = await fetch(endPoints.products.getLimitProducts(6))
@@ -31,7 +32,9 @@ export function Provider({ children }) {
     return (
         <Context.Provider value={{
             limitProducts,
-            products
+            products,
+            auth,
+            setAuth
         }}>
             {children}
         </Context.Provider>

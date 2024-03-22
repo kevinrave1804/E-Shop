@@ -1,17 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { BellIcon } from '@heroicons/react/24/outline'
+import { NavLink } from 'react-router-dom'
+import { Context } from '../../Context'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 function UserMenu() {
+    const context = useContext(Context)
+    const { setAuth } = context
     return (
         <>
             <button
                 type="button"
-                className="relative rounded-full bg-teal-400 p-1 text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-teal-400"
+                className="relative rounded-full bg-teal-400 p-1 text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-teal-400 max-sm:hidden"
             >
                 <span className="absolute -inset-1.5" />
                 <span className="sr-only">View notifications</span>
@@ -19,7 +23,7 @@ function UserMenu() {
             </button>
 
             {/* Profile dropdown */}
-            <Menu as="div" className="relative ml-3 max-sm:hidden">
+            <Menu as="div" className="relative ml-3">
                 <div>
                     <Menu.Button className="relative flex rounded-full bg-teal-400 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-teal-400">
                         <span className="absolute -inset-1.5" />
@@ -63,12 +67,13 @@ function UserMenu() {
                         </Menu.Item>
                         <Menu.Item>
                             {({ active }) => (
-                                <a
-                                    href="#"
+                                <NavLink
+                                    to={'/login'}
                                     className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                    onClick={() => setAuth(false)}
                                 >
                                     Sign out
-                                </a>
+                                </NavLink>
                             )}
                         </Menu.Item>
                     </Menu.Items>
