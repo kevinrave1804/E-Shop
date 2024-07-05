@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { endPoints } from '../Services/endPoints'
+import { getProductsCart } from '../Services/localStorage'
 
 export const Context = createContext()
 
@@ -7,6 +8,8 @@ export function Provider({ children }) {
     const [limitProducts, setlimitProducts] = useState(null)
     const [products, setProdcuts] = useState(null)
     const [auth, setAuth] = useState(false)
+    const [cartData, setCarData] = useState(getProductsCart())
+    const [totalPayment, setTotalPayment] = useState(0)
 
     async function fetchLimitProducts() {
         const response = await fetch(endPoints.products.getLimitProducts(6))
@@ -34,7 +37,11 @@ export function Provider({ children }) {
             limitProducts,
             products,
             auth,
-            setAuth
+            setAuth,
+            cartData,
+            setCarData,
+            totalPayment,
+            setTotalPayment
         }}>
             {children}
         </Context.Provider>

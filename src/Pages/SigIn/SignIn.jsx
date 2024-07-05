@@ -11,6 +11,7 @@ function SignIn() {
     const handleSubmit = (event) => {
         event.preventDefault()
         setAuth(true)
+        window.scrollTo(0, 0)
         navigate('/')
     }
     return (
@@ -99,7 +100,7 @@ function SignIn() {
                         </div>
                         <div className='mt-1'>
                             <p className='text-sm font-bold'>Do you have an account?
-                                <NavLink to={'/login'} className='text-teal-500'>Log In</NavLink></p>
+                                <NavLink to={'/login'} className='text-teal-500' onClick={() => window.scrollTo(0, 0)}> Log In</NavLink></p>
                         </div>
                     </div>
                 </div>

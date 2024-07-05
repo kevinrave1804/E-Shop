@@ -1,6 +1,6 @@
-import { Fragment, useContext } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useContext } from 'react'
+import { Disclosure } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import UserMenu from '../UserMenu/UserMenu'
 import { NavLink } from 'react-router-dom'
 import { BuildingStorefrontIcon } from '@heroicons/react/24/solid'
@@ -8,8 +8,9 @@ import { Context } from '../../Context'
 import Button from '../Button/Button'
 
 const navigation = [
-    { name: 'Categories', href: '/categories', current: false },
-    { name: 'Products', href: '/products', current: false },
+    { name: 'Categories', href: '/categories' },
+    { name: 'Products', href: '/products' },
+    { name: 'Cart', href: '/cart' },
 ]
 
 function classNames(...classes) {
@@ -51,10 +52,9 @@ export default function Navbar2() {
                                                 key={item.name}
                                                 to={item.href}
                                                 className={classNames(
-                                                    item.current ? 'bg-teal-900 text-white' : 'text-black hover:bg-teal-700 hover:text-white',
+                                                    'text-black hover:bg-teal-700 hover:text-white',
                                                     'rounded-md px-3 py-2 text-sm font-medium'
                                                 )}
-                                                aria-current={item.current ? 'page' : undefined}
                                             >
                                                 {item.name}
                                             </NavLink>
@@ -77,10 +77,9 @@ export default function Navbar2() {
                                     as="a"
                                     href={item.href}
                                     className={classNames(
-                                        item.current ? 'bg-teal-900 text-white' : 'text-black hover:bg-teal-700 hover:text-white',
+                                        'text-black hover:bg-teal-700 hover:text-white',
                                         'block rounded-md px-3 py-2 text-base font-medium'
                                     )}
-                                    aria-current={item.current ? 'page' : undefined}
                                 >
                                     {item.name}
                                 </Disclosure.Button>

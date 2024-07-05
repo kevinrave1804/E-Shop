@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import RateStar from '../RateStar/RateStar'
+import { addProductCart, getProductsCart } from '../../Services/localStorage'
+import { Context } from '../../Context'
+
+function ClassList(...clases) {
+    return clases.filter(Boolean).join(' ')
+}
 
 function ProductPreview({ open, setOpen, product }) {
+    const context = React.useContext(Context)
+    const { cartData, setCarData } = context
+    const [inCart, setInCart] = React.useState(false)
+
+    useEffect(() => {
+        const productInCart = cartData.find(item => item.id === product.id)
+        if (productInCart) {
+            setInCart(true)
+        }
+    }, [cartData])
+
+
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -80,9 +98,15 @@ function ProductPreview({ open, setOpen, product }) {
 
                                                 <button
                                                     type="button"
-                                                    className="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-teal-600 px-8 py-3 text-base font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+                                                    className={ClassList(inCart ? "bg-gray-400" : "bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2", "mt-6 flex w-full items-center justify-center rounded-md border border-transparent  px-8 py-3 text-base font-medium text-white ")}
+                                                    disabled={inCart}
+                                                    onClick={() => {
+                                                        addProductCart(product)
+                                                        setCarData(getProductsCart())
+                                                    }}
                                                 >
-                                                    Add to bag
+
+                                                    {inCart ? <span>In Cart</span> : <span>Add to cart</span>}
                                                 </button>
                                             </section>
                                         </div>
