@@ -1,17 +1,25 @@
 import React, { useEffect } from 'react'
 import { Context } from '../../Context';
+import { deleteProductInCart, getProductsCart } from '../../Services/localStorage';
+import { OrderComplete } from '../OrderComplete';
 
 function Payment() {
     const context = React.useContext(Context)
-    const { cartData, totalPayment, setTotalPayment } = context
+    const { cartData, setCarData, totalPayment, setTotalPayment } = context
+    const [open, setOpen] = React.useState(false)
 
     useEffect(() => {
         let count = 0
+        setTotalPayment(0)
         cartData?.forEach(item => {
-            count = count + item.price
+            count = count + (item.price * item?.countUnity)
             setTotalPayment(count)
         })
     }, [cartData])
+
+    const tax = parseFloat((totalPayment * 0.05).toFixed(2))
+    const total = parseFloat(totalPayment + tax).toFixed(2)
+    const subtotal = parseFloat(totalPayment).toFixed(2)
 
     return (
         <div className='border-2 rounded-md  flex flex-col justify-center md:sticky'>
@@ -19,22 +27,27 @@ function Payment() {
             <div className='flex justify-between md:flex-col px-2'>
                 <div className='border-b-2'>
                     <p className='font-bold'>Subtotal:</p>
-                    <p>{totalPayment}</p>
+                    <p>{subtotal}</p>
                 </div>
                 <div className='border-b-2'>
                     <p className='font-bold'>Tax:</p>
-                    <p>{(totalPayment * 0.02).toFixed(2)}</p>
+                    <p>{tax}</p>
                 </div>
                 <div className='border-b-2'>
                     <p className='font-bold'>Total</p>
-                    <p>{parseInt(totalPayment + (totalPayment * 0.02).toFixed(2))}</p>
+                    <p>{total}</p>
                 </div>
                 <button className='bg-teal-600 px-3 rounded-md mt-4' onClick={() => {
-                    console.log(getProductsCart());
+                    setOpen(true)
+                    cartData.forEach(item => {
+                        deleteProductInCart(item)
+                    })
+                    setCarData(getProductsCart())
                 }}>
                     Order
                 </button>
             </div>
+            <OrderComplete open={open} setOpen={setOpen} />
         </div>
     )
 }

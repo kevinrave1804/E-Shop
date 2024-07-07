@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Layout from '../../Components/Layout/Layout'
 import CartProduct from '../../Components/CartProduct/CartProduct'
 import { Context } from '../../Context'
-import { getProductsCart } from '../../Services/localStorage'
 import { Payment } from '../../Components/Payment'
+import { CartEmpty } from '../../Components/CartEmpty'
 
 
 function Cart() {
     const context = React.useContext(Context)
     const { cartData } = context
 
-    console.log(cartData);
     return (
         <Layout>
             <section className='text-center'>
@@ -18,7 +17,7 @@ function Cart() {
                 <div className='grid grid-cols-[2.5fr,0.6fr] gap-5 m-6 max-md:flex max-md:flex-col-reverse'>
                     <div>
                         {cartData?.length === 0
-                            ? <p>Your cart is empty</p>
+                            ? <CartEmpty />
                             : cartData.map((product, index) => <CartProduct key={index} product={product} />)}
                     </div>
                     <div className='relative'>

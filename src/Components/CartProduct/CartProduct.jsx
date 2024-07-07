@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoClose } from 'react-icons/io5'
 import { FaPlus, FaMinus } from 'react-icons/fa6'
 import { deleteProductInCart, getProductsCart, updateCartInCart } from '../../Services/localStorage'
@@ -7,7 +7,12 @@ import { Context } from '../../Context'
 function CartProduct({ product }) {
     const [countUnity, setCountUnity] = React.useState(product.countUnity)
     const context = React.useContext(Context)
-    const { setCarData } = context
+    const { cartData, setCarData } = context
+
+    useEffect(() => {
+        setCountUnity(product.countUnity)
+    }, [cartData])
+
     return (
         <section className='grid grid-cols-2 mb-6 border-b-4 pb-2'>
             <div className='flex max-md:flex-col'>
@@ -30,13 +35,16 @@ function CartProduct({ product }) {
                     <FaPlus size={15} onClick={() => {
                         setCountUnity(countUnity + 1)
                         deleteProductInCart(product)
-                        console.log(updateCartInCart(product, countUnity + 1))
+                        updateCartInCart(product, countUnity + 1)
+                        setCarData(getProductsCart())
                     }} className='cursor-pointer' />
                     <span>{countUnity}</span>
                     <FaMinus size={15} onClick={() => {
+                        while (countUnity === 1) return
                         setCountUnity(countUnity - 1)
                         deleteProductInCart(product)
-                        console.log(updateCartInCart(product, countUnity - 1))
+                        updateCartInCart(product, countUnity - 1)
+                        setCarData(getProductsCart())
                     }} className='cursor-pointer' />
                 </div>
                 <p className='mt-8 font-bold'>Price:<span> ${product.price}</span></p>
